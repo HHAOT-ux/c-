@@ -6,6 +6,7 @@ struct Node {
     Node* next;
     Node(int x) : val(x), next(nullptr) {}
 };
+//创建链表
 Node* createList() {
     Node* head = nullptr;
     Node* tail = nullptr;
