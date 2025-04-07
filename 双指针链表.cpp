@@ -4,6 +4,7 @@ using namespace std;
 struct Node {
     int val;
     Node* next;
+  // 构造函数
     Node(int x) : val(x), next(nullptr) {}
 };
 //创建链表
