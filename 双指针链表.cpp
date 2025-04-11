@@ -40,7 +40,7 @@ void printList(Node* head) {
     }
     cout << endl;
 }
-
+//遍历输出
 void freeList(Node* head) {
     while (head != nullptr) {
         Node* temp = head;
