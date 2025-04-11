@@ -31,7 +31,7 @@ Node* createList() {
 
     return head;
 }
-
+// 遍历输出
 void printList(Node* head) {
     Node* current = head;
     while (current != nullptr) {
@@ -40,7 +40,7 @@ void printList(Node* head) {
     }
     cout << endl;
 }
-//遍历输出
+// 释放内存
 void freeList(Node* head) {
     while (head != nullptr) {
         Node* temp = head;
