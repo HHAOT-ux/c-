@@ -4,7 +4,7 @@ using namespace std;
 struct Node {
     int val;
     Node* next;
-  // 构造函数
+    // 构造函数
     Node(int x) : val(x), next(nullptr) {}
 };
 //创建链表
@@ -31,6 +31,31 @@ Node* createList() {
 
     return head;
 }
+// 删除指定位置的节点（0 表示删除头部）
+void deleteList(Node*& head, int pos)
+{
+    if (!head) return;
+    if (pos == 0) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+    Node* curr = head;
+    int index = 0;
+    while (curr->next && index < pos - 1) {
+        curr = curr->next;
+        index++;
+    }
+    //删除位置超出链表长度
+    if (!curr->next) {
+        return;
+    }
+    //删除节点（非头节点）
+    Node* temp = curr->next;
+    curr->next = temp->next;
+    delete temp;
+}
 // 遍历输出
 void printList(Node* head) {
     Node* current = head;
@@ -48,14 +73,54 @@ void freeList(Node* head) {
         delete temp;
     }
 }
+// 查找
+
+// 插入：在 pos 位置插入一个值为 val 的节点（从 0 开始）
+void insertList(Node*& head, int pos, int val)
+{
+    Node* temp = new Node(val);
+    if (pos == 0) {
+        temp->next = head;
+        head = temp;
+        return;
+    }
+    Node* tou = head;
+    int i = 0;
+    //减一是因为从 0 开始
+    while (tou && i < pos-1) {
+        tou = tou->next;
+        i++;
+    }
+    if (tou) {
+        temp->next = tou->next;
+        tou->next = temp;
+    }
+    else {
+        delete temp;
+    }
+}
+// 查找
+void findList(Node*& head, int pos) {
+    int i = 0;
+    Node *temp = head;
+    while (temp && i < pos ) {
+        i++;
+        temp = temp->next;
+    }
+    if(temp)
+    cout << temp->val;
+    return;
+}
 
 int main() {
-    cout << "请输入一组正整数（输入0结束）：" << endl;
+    //cout << "请输入一组正整数（输入0结束）：" << endl;
     Node* head = createList();
-
-    cout << "你输入的链表是：" << endl;
+    //text
+   /* int a,b;
+    cin >> a>>b;
+    findList(head, a);
+     cout << "你输入的链表是：" << endl;*/
     printList(head);
 
     freeList(head);
-    return 0;
 }
