@@ -73,7 +73,6 @@ void freeList(Node* head) {
         delete temp;
     }
 }
-// 查找
 
 // 插入：在 pos 位置插入一个值为 val 的节点（从 0 开始）
 void insertList(Node*& head, int pos, int val)
